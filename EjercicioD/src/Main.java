@@ -1,17 +1,69 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        readerQuiz();
+        System.out.print("Codigo finalizado");
+    }
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+    public static ArrayList<String> reader(){
+        //creando el scanner
+        ArrayList<String> tokens = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        //leyendo los caracteres
+        do{
+            System.out.print("ingrese numero del hexagono\n");
+            tokens.add(scanner.next());
+            System.out.print("ingrese el caracter del hexagono\n");
+            System.out.println(tokens);
+            if(tokens.equals("exit")) {
+                break;
+            }
+        } while (scanner.hasNext());
+
+        return tokens;
+    }
+
+    public static void readerQuiz() {
+        System.out.println(
+                "Buenas, ¿como desea ingresar su input?\n"
+                + "1) Ingresar datos por consola\n"
+                + "2) Ingresar por archivo .txt\n"
+        );
+
+        // leyendo el dato
+        String result;
+        Scanner scanner = new Scanner(System.in);
+        result = scanner.next();
+        System.out.println(result);
+
+        //validando el dato
+        if (result.equals("1")) {
+            var newtokens = reader();
+            painter(newtokens);
+        } else if (result.equals("2")){
+            String a = readerFile.Input.readFile("text.txt");
+            //validación para sacar los inputs
+        } else {
+            System.out.println("No hay opciones validas...");
         }
     }
+
+    public static String painter(ArrayList<String> newtokens){
+        String result = newtokens.get(0);
+        return result;
+    }
 }
+
+
+/*  COMENTARIOS
+ * cuando se ingresa un txt, con vairos casos.
+ * 00 mata el programa
+ * split para partir la cadena
+ *
+ * List<String> inputSplitted = Arrays.stream(inputSize.split(" "))
+            .filter(param -> param.length() > 0)
+            .collect(Collectors.toList());
+ * */
